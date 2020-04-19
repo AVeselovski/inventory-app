@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root 'pages#home'
   
-  resources :items
-  resources :categories
+  resources :categories do
+    member do
+      patch :move
+    end
+  end
+  resources :items do
+    member do
+      patch :move
+    end
+  end
 end

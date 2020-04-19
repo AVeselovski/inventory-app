@@ -1,2 +1,2 @@
-json.extract! item, :id, :list_id, :name, :position, :created_at, :updated_at
+json.extract! item, :id, :category_id, :name, :position, :quantity, :created_at, :updated_at
 json.url item_url(item, format: :json)

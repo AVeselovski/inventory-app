@@ -14,7 +14,7 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "New Item"
 
-    fill_in "List", with: @item.list_id
+    fill_in "Category", with: @item.category_id
     fill_in "Name", with: @item.name
     fill_in "Position", with: @item.position
     click_on "Create Item"
@@ -27,7 +27,7 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     click_on "Edit", match: :first
 
-    fill_in "List", with: @item.list_id
+    fill_in "Category", with: @item.category_id
     fill_in "Name", with: @item.name
     fill_in "Position", with: @item.position
     click_on "Update Item"

@@ -1,15 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<div class="row">
-  <% @categories.each do |category| %>
-    <div class="col-3">
-      <h3><%= category.name %></h3>
-    </div>
-  <% end %>
+<div class="page categories-page">
+  <div class="container-full">
+    <%= tag.categories id: :categories, data: { categories: @categories.to_json(include: :items) } %>
+  </div>
 </div>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>

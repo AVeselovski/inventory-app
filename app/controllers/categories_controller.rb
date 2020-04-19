@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :move, :destroy]
 
   # GET /categories
   # GET /categories.json
@@ -49,6 +49,13 @@ class CategoriesController < ApplicationController
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PATCH /categories/1/move
+  # PATCH /categories/1/move.json
+  def move
+    @category.insert_at(category_params[:position].to_i)
+    render action: :show
   end
 
   # DELETE /categories/1

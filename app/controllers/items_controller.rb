@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :move, :destroy]
 
   # GET /items
   # GET /items.json
@@ -51,6 +51,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  # PATCH /items/1/move
+  # PATCH /items/1/move.json
+  def move
+    @item.update(item_params)
+    render action: :show
+  end
+
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
@@ -69,6 +76,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:list_id, :name, :position)
+      params.require(:item).permit(:category_id, :name, :position, :quantity)
     end
 end

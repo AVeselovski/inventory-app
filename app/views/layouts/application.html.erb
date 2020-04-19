@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InventoryApp</title>
+    <title>Inventory App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +10,19 @@
   </head>
 
   <body>
-    <div id="app">
-      <div class="container-fluid app__container">
-        <%= yield %>
-      </div>
+    <!-- Vue instance -->
+    <div id="app-container" class="app">
+      <app inline-template>
+        <div class="app__container">
+          <vue-header>
+            <template slot="center">
+              <%= link_to 'Home', root_path, class: "link-dark link-dark-#{current_class?(root_path)} mx-2" %>
+              <%= link_to 'Inventory', categories_path, class: "link-dark link-dark-#{current_class?(categories_path)} mx-2" %>
+            </template>
+          </vue-header>
+          <%= yield %>
+        </div>
+      </app>
     </div>
   </body>
 </html>

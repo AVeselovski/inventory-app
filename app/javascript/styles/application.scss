@@ -1,1 +1,14 @@
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap";
+@import "utils/config";
+@import "utils/elements";
+
+@import "pages/categories-page";
+
+@import "utils/modifiers";
+
+.app {
+  &__container {
+    min-height: 100vh;
+    position: relative;
+  } 
+}
