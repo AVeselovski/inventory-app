@@ -1,5 +1,5 @@
 <template>
-<div id="header" class="header">
+<div class="header" id="header">
   <div class="header__left">
     <slot name="left"></slot>
   </div>

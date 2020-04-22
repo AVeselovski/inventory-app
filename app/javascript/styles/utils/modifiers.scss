@@ -282,6 +282,15 @@
   align-items: center;
   display: flex;
 }
+.align-top {
+  align-items: flex-start;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
+}
 // other
 .disabled {
   opacity: 0.5;

@@ -63,6 +63,9 @@
     opacity: 0.5;
   }
 }
+.input-error {
+  border-color: $danger;
+}
 button, .btn {
   background-color: inherit;
   border: none;
@@ -72,6 +75,7 @@ button, .btn {
   font-size: $font-base;
   font-weight: 400;
   line-height: 1.2;
+  outline: none;
   padding: 6px 12px;
   text-align: center;
   text-decoration: none;

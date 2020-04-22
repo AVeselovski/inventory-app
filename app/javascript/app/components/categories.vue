@@ -1,6 +1,6 @@
 <template>
-<draggable v-model="categories" group="categories" @end="categoryMoved" id="categories" class="categories-container drag-area">
-  <category v-for="category in categories" :key="category.id" :category="category" @item-moved="itemMoved"></category>
+<draggable v-model="categories" @end="categoryMoved" class="categories-container drag-area" group="categories" handle=".drag-handle" id="categories">
+  <category v-for="category in categories" :category="category" @item-moved="itemMoved" :key="category.id"></category>
 </draggable>
 </template>
 
