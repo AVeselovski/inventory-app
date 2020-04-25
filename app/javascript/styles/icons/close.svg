@@ -1,0 +1,4 @@
+<svg height="30" width="30">
+  <path d="M4,26 26,4" stroke-linecap="round" stroke-width="3" />
+  <path d="M4,4 26,26" stroke-linecap="round" stroke-width="3" />
+</svg>

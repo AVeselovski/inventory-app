@@ -2,13 +2,13 @@
 <div class="category__item" :class="[isDraggable && 'is-draggable']">
   <div class="flex justify-between">
     <div v-if="!isEditing" class="flex">
-      <button @click="startEditing" class="btn-icon btn-icon-muted mr-1"><icon name="edit" small></icon></button>
+      <button @click="startEditing" class="btn-icon btn-icon-muted mr-1"><icon name="edit-small" size="18"></icon></button>
       <span>{{ item.name }}</span>
     </div>
     <div v-if="!isEditing" class="flex">
-      <button @click="subtract" class="btn-icon btn-icon-muted"><icon name="chevron-left" small></icon></button>
-      <span class="text-m" :class="[quantityClass]">x{{ item.quantity }}</span>
-      <button @click="increase" class="btn-icon btn-icon-muted"><icon name="chevron-right" small></icon></button>
+      <button @click="subtract" class="btn-icon btn-icon-highlight"><icon name="chevron-left" size="18"></icon></button>
+      <span class="text-m mono mx-1" :class="[quantityClass]">x{{ item.quantity }}</span>
+      <button @click="increase" class="btn-icon btn-icon-highlight"><icon name="chevron-right" size="18"></icon></button>
     </div>
   </div>
 
@@ -58,7 +58,7 @@
     <div class="flex justify-between mt-2">
       <div class="flex">
         <button @click.prevent="updateItem" class="btn btn-success btn-m mr-2" type="submit">Edit</button>
-        <button @click="stopEditing" class="btn-icon" type="button"><icon name="close" small></icon></button>
+        <button @click="stopEditing" class="btn-icon btn-icon-highlight" type="button"><icon name="close-small" size="18"></icon></button>
       </div>
       <a @click.prevent="onRemoveItem" class="link-danger" href="#">Remove</a>
     </div>

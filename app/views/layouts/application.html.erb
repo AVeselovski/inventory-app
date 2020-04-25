@@ -16,8 +16,8 @@
         <div class="app__container">
           <vue-header>
             <template slot="center">
-              <%= link_to 'Home', root_path, class: "link-dark link-dark-#{current_class?(root_path)} mx-2" %>
-              <%= link_to 'Inventory', categories_path, class: "link-dark link-dark-#{current_class?(categories_path)} mx-2" %>
+              <%= link_to 'Home', root_path, class: "link-light link-light-#{current_class?(root_path)} mx-2" %>
+              <%= link_to 'Inventory', categories_path, class: "link-light link-light-#{current_class?(categories_path)} mx-2" %>
             </template>
           </vue-header>
           <%= yield %>

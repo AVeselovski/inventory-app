@@ -1,23 +1,48 @@
 <template>
-<draggable v-model="categories" @end="categoryMoved" class="categories-container drag-area" group="categories" handle=".drag-handle" id="categories">
+<draggable v-model="categories" @end="categoryMoved" class="categories-container drag-area" draggable=".is-draggable" group="categories" handle=".drag-handle" id="categories">
   <category v-for="category in categories" :category="category" @item-moved="itemMoved" :key="category.id"></category>
+
+  <div class="new-category">
+    <button v-if="!isEditing" @click="startEditing" class="btn-full-width btn-default-dark">+ Add Category</button>
+    <form v-if="isEditing" @submit.prevent="submitNewCategory">
+      <input v-model="newCategory" v-on:blur="stopEditing" class="input" :placeholder="getPlaceholder()" ref="newCategoryInput" type="text">
+    </form>
+  </div>
 </draggable>
 </template>
 
 <script>
 import Rails from '@rails/ujs'
 import Draggable from 'vuedraggable'
+import { getError } from '../helpers'
 import Category from './category.vue'
+import Icon from '../components/icon.vue'
+
+const placeholders = [
+  "Swords",
+  "Armor",
+  "Potions",
+  "Quest Items",
+  "Junk"
+]
 
 export default {
   name: 'Categories',
   data: function() {
     return {
       categories: JSON.parse(this.$attrs['data-categories']),
-      newItems: {}
+      errors: null,
+      isEditing: false,
+      newCategory: ''
     }
   },
   methods: {
+    _showError(err) {
+      return getError(err)
+    },
+    getPlaceholder() {
+      return placeholders[Math.floor(Math.random() * placeholders.length)]
+    },
     categoryMoved(e) {
       const data = new FormData
       data.append("category[position]", e.newIndex + 1)
@@ -57,11 +82,40 @@ export default {
           console.log(error)
         }
       })
+    },
+    startEditing() {
+      this.isEditing = true
+      this.$nextTick(() => { this.$refs.newCategoryInput.focus() })
+    },
+    stopEditing() {
+      this.isEditing = false
+    },
+    submitNewCategory() {
+      if (this.newCategory === '') { this.isEditing = false; return }
+
+      const data = new FormData
+      data.append("category[name]", this.newCategory)
+
+      Rails.ajax({
+        url: "/categories",
+        type: "POST",
+        data,
+        dataType: "json",
+        error: error => {
+          console.log(error)
+        },
+        success: data => {
+          this.categories.push(data)
+          this.newCategory = ''
+          this.isEditing = false
+        }
+      })
     }
   },
   components: {
     Draggable,
-    Category
+    Category,
+    Icon
   },
 }
 </script>

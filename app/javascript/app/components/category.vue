@@ -1,7 +1,11 @@
 <template>
-<div class="category">
+<div class="category is-draggable">
   <div class="category__header drag-handle">
-    <h3 class="heading-3">{{ category.name }}</h3>
+    <h4 v-if="!isEditingTitle" @click="startEditingTitle" class="heading-4 primary my-1 pl-2">{{ category.name }}</h4>
+    <form v-if="isEditingTitle" @submit.prevent="updateCategoryTitle">
+      <input v-model="category.name" v-on:blur="stopEditingTitle" class="input category__title-input" ref="editTitleInput" type="text">
+    </form>
+    <button @click="showOptions" class="btn-icon btn-icon-highlight" type="button"><icon name="options" size="24"></icon></button>
   </div>
   <div class="category__body">
     <draggable v-model="category.items" @change="onItemMoved" class="drag-area" draggable=".is-draggable" group="items">
@@ -15,13 +19,13 @@
     
     <button v-if="!isEditing" @click="startEditing" class="btn-full-width btn-default mt-2">+ Add Item</button>
     <form v-if="isEditing" class="mt-2">
-      <input v-model="newItem" class="input" :class="[errors && errors.name && 'input-error']" :placeholder="getPlaceholder()" ref="newItemInput" type="text">
-      <div v-if="errors && errors.name">
-        <span class="text-s danger">{{ _showError(errors.name) }}</span>
+      <input v-model="newItem" class="input" :class="[itemErrors && itemErrors.name && 'input-error']" :placeholder="getPlaceholder()" ref="newItemInput" type="text">
+      <div v-if="itemErrors && itemErrors.name">
+        <span class="text-s danger">{{ _showError(itemErrors.name) }}</span>
       </div>
       <div class="flex mt-2">
         <button @click.prevent="submitNewItem(category.id)" class="btn btn-success btn-m mr-2" type="submit">Add</button>
-        <button @click="stopEditing" class="btn-icon" type="button"><icon name="close" small></icon></button>
+        <button @click="stopEditing" class="btn-icon btn-icon-highlight" type="button"><icon name="close-small" size="18"></icon></button>
       </div>
     </form>
   </div>
@@ -52,9 +56,11 @@ export default {
   name: 'Category',
   data: function() {
     return {
-      errors: null,
+      itemErrors: null,
       isEditing: false,
-      newItem: ''
+      isEditingTitle: false,
+      newItem: '',
+      originalTitle: ''
     }
   },
   props: {
@@ -67,7 +73,7 @@ export default {
       return getError(err)
     },
     getPlaceholder() {
-      return placeholders[Math.floor(Math.random() * placeholders.length) + 1]
+      return placeholders[Math.floor(Math.random() * placeholders.length)]
     },
     onItemMoved(e) {
       this.$emit('item-moved', e)
@@ -85,20 +91,29 @@ export default {
         }
       })
     },
+    showOptions() {},
     startEditing() {
       this.isEditing = true
       this.$nextTick(() => { this.$refs.newItemInput.focus() })
+    },
+    startEditingTitle() {
+      this.originalTitle = this.category.name
+      this.isEditingTitle = true
+      this.$nextTick(() => { this.$refs.editTitleInput.focus() })
     },
     stopEditing() {
       this.isEditing = false
       this.errors = null
     },
+    stopEditingTitle() {
+      this.isEditingTitle = false
+    },
     submitNewItem() {
       const data = new FormData
       data.append("item[category_id]", this.category.id)
       data.append("item[name]", this.newItem)
-      data.append("item[quantity]", 1)
-      data.append("item[minimum]", 1)
+      data.append("item[quantity]", 0)
+      data.append("item[minimum]", 0)
 
       Rails.ajax({
         url: "/items",
@@ -114,6 +129,30 @@ export default {
           this.newItem = ''
           this.errors = null
           this.$nextTick(() => { this.$refs.newItemInput.focus() })
+        }
+      })
+    },
+    updateCategoryTitle() {
+      if (this.category.name === '') {
+        this.isEditingTitle = false
+        this.category.name = this.originalTitle
+
+        return
+      }
+
+      const data = new FormData
+      data.append("category[name]", this.category.name)
+
+      Rails.ajax({
+        url: `/categories/${this.category.id}`,
+        type: "PATCH",
+        data,
+        dataType: "json",
+        error: error => {
+          console.log(error)
+        },
+        success: data => {
+          this.isEditingTitle = false
         }
       })
     }
