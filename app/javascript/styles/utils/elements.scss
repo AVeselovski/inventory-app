@@ -61,8 +61,8 @@
   width: 100%;
 
   &:focus {
-    outline:none; 
-    border:1px solid $primary;
+    outline: none; 
+    border: 1px solid $primary;
     box-shadow: 0 0 0 1px $primary;
   }
 
@@ -72,7 +72,8 @@
   }
 }
 .input-error {
-  border-color: $danger;
+  border-color: $danger !important;
+  box-shadow: 0 0 0 1px $danger !important;
 }
 button, .btn {
   background-color: inherit;
@@ -408,61 +409,109 @@ button, .btn {
 }
 .link-primary {
   color: $primary;
+  fill: $primary;
+  stroke: $primary;
 
   &:hover, &:focus, &:active {
     color: darken($primary, 10);
+    fill: darken($primary, 10);
+    stroke: darken($primary, 10);
   }
 }
 .link-primary-active {
-  color: darken($primary, 10)
+  color: darken($primary, 10);
+  fill: darken($primary, 10);
+  stroke: darken($primary, 10);
 }
 .link-light {
   color: $grey-3;
+  fill: $grey-3;
+  stroke: $grey-3;
 
   &:hover, &:focus, &:active {
     color: lighten($grey-3, 10);
+    fill: darken($grey-3, 10);
+    stroke: darken($grey-3, 10);
   }
 }
 .link-light-active {
-  color: lighten($grey-3, 10)
+  color: lighten($grey-3, 10);
+  fill: darken($grey-3, 10);
+  stroke: darken($grey-3, 10);
 }
 .link-dark {
   color: $grey-4;
+  fill: $grey-4;
+  stroke: $grey-4;
 
   &:hover, &:focus, &:active {
     color: darken($grey-4, 10);
+    fill: darken($grey-4, 10);
+    stroke: darken($grey-4, 10);
   }
 }
 .link-dark-active {
-  color: darken($grey-4, 10)
+  color: darken($grey-4, 10);
+  fill: darken($grey-4, 10);
+  stroke: darken($grey-4, 10);
 }
 .link-success {
   color: $success;
+  fill: $success;
+  stroke: $success;
 
   &:hover, &:focus, &:active {
     color: darken($success, 10);
+    fill: darken($success, 10);
+    stroke: darken($success, 10);
   }
 }
 .link-success-active {
-  color: darken($success, 10)
+  color: darken($success, 10);
+  fill: darken($success, 10);
+  stroke: darken($success, 10);
 }
 .link-warning {
   color: $warning;
+  fill: $warning;
+  stroke: $warning;
 
   &:hover, &:focus, &:active {
     color: darken($warning, 10);
+    fill: darken($warning, 10);
+    stroke: darken($warning, 10);
   }
 }
 .link-warning-active {
-  color: darken($warning, 10)
+  color: darken($warning, 10);
+  fill: darken($warning, 10);
+  stroke: darken($warning, 10);
 }
 .link-danger {
   color: $danger;
+  fill: $danger;
+  stroke: $danger;
 
   &:hover, &:focus, &:active {
     color: darken($danger, 10);
+    fill: darken($danger, 10);
+    stroke: darken($danger, 10);
   }
 }
 .link-danger-active {
-  color: darken($danger, 10)
+  color: darken($danger, 10);
+  fill: darken($danger, 10);
+  stroke: darken($danger, 10);
+}
+.link-icon {
+  padding-top: $space-1;
+
+  span {
+    line-height: 0.8; // Lamestream HAX
+    margin-right: $space-2;
+    stroke: inherit;
+  }
+  svg {
+    stroke: inherit
+  }
 }

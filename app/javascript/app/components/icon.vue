@@ -36,6 +36,18 @@
     <path d="M4,4 20,20" fill="none" stroke-linecap="round" stroke-width="3" />
   </svg>
 
+  <svg v-if="name === 'delete'" :height="size || 30" :width="size || 30" viewBox="0 0 30 30">
+    <path
+      d="M4,6 8,26 22,26 26,6"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="3"
+    />
+    <path d="M10,4 20,4" stroke-linecap="round" stroke-width="3" />
+    <path d="M15,12 15,26" stroke-linecap="round" stroke-width="3" />
+  </svg>
+
   <svg v-if="name === 'edit'" :height="size || 30" :width="size || 30" viewBox="0 0 30 30">
     <path
       d="M14,4 4,4 4,26 26,26 26,16"

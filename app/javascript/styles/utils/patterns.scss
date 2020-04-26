@@ -1,0 +1,109 @@
+// DROPDOWN
+.dropdown {
+  position: relative;
+
+  .dropdown-menu {
+    background-color: $white;
+    border: 1px solid $grey-1;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    display: none;
+    padding: $space-2 $space-3;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .bottom {
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translateX(-50%);
+  }
+  .left {
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .right {
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .top {
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+  }
+  .bottom-left {
+    left: 0;
+    top: calc(100% + 8px);
+  }
+  .bottom-right {
+    right: 0;
+    top: calc(100% + 8px);
+  }
+  .left-bottom {
+    bottom: 0;
+    right: calc(100% + 8px);
+  }
+  .left-top {
+    right: calc(100% + 8px);
+    top: 0;
+  }
+  .right-bottom {
+    bottom: 0;
+    left: calc(100% + 8px);
+  }
+  .right-top {
+    left: calc(100% + 8px);
+    top: 0;
+  }
+  .dropdown-menu.active {
+    display: block;
+  }
+}
+
+// MODAL
+.modal {
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.2);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  overflow-y: scroll;
+  padding: 80px 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99;
+}
+.modal-dialog {
+  margin: 0;
+  min-width: 300px;
+}
+.modal-content {
+  background-color: $grey-0;
+  border: 1px solid $grey-1;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.modal-header {
+  border-bottom: 1px solid $grey-2;
+
+  .modal-title {
+    font-size: $font-l;
+    font-weight: 500;
+    line-height: 1;
+  }
+}
+.modal-body {
+  border-bottom: 1px solid $grey-2;
+  color: $grey-6;
+  padding: $space-3;
+}
+.modal-header,
+.modal-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $space-3;
+}

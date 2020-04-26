@@ -4,11 +4,10 @@ require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')
 
-import '../styles/application.scss'
-
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import App from '../app/app.vue'
+import '../styles/application.scss'
 
 Vue.use(TurbolinksAdapter)
 
