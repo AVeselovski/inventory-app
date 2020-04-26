@@ -48,9 +48,6 @@
     @close="isDeleteModalActive = false"
     dismissMsg="Nope..."
   >
-    <template v-slot:header>
-      Lol
-    </template>
     <template v-slot:body>Delete {{ category.name }} category?</template>
     <template v-slot:footer>
       <button @click="removeCategory" class="btn btn-danger">Yes, delete it!</button>
