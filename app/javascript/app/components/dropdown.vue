@@ -1,36 +1,33 @@
 <template>
-  <div
-    class="dropdown"
-    v-on-clickaway="close"
-  >
+  <div class="dropdown" v-on-clickaway="close">
     <slot name="trigger" :toggle="toggle">
       <button></button>
     </slot>
-    <div v-show="isActive" class="dropdown-menu" :class="[position, { 'active': isActive }]">
+    <div v-show="isActive" class="dropdown-menu" :class="[position, { active: isActive }]">
       <slot name="items"></slot>
     </div>
   </div>
 </template>
 
 <script>
-import { mixin as clickaway } from 'vue-clickaway';
+import { mixin as clickaway } from "vue-clickaway";
 
 export default {
   props: {
     position: {
       type: String,
-      default: 'bottom-left'
-    } 
+      default: "bottom-left"
+    }
   },
-  mixins: [ clickaway ],
+  mixins: [clickaway],
   data() {
     return {
-      isActive: false,
-    }
+      isActive: false
+    };
   },
   methods: {
     close() {
-      this.isActive = false
+      this.isActive = false;
     },
     toggle() {
       this.isActive = !this.isActive;

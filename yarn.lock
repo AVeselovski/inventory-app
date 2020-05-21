@@ -1999,6 +1999,11 @@ compression@^1.7.4:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
+comrade-styles@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/comrade-styles/-/comrade-styles-2.0.0.tgz#17c2af8a223e2781546b2d617e806e98191fd89c"
+  integrity sha512-dAulUExZz738cODw+u7ooU6WcmIp91dwOspJ/+WCAlnibImqblTE3YNHk8TfAyiYjJFgSYVaaQm6/zW/hHTPcQ==
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"

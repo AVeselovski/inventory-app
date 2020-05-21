@@ -1,15 +1,15 @@
-// @import "~bootstrap/scss/bootstrap";
-@import "utils/config";
-@import "utils/elements";
-@import "utils/patterns";
+@import "~comrade-styles/scss/comrade";
 
 @import "pages/categories-page";
 
-@import "utils/modifiers";
+body {
+  background-color: $black;
+  color: $grey-0;
+}
 
 .app {
   &__container {
     min-height: 100vh;
     position: relative;
-  } 
+  }
 }

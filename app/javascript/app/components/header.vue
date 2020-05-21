@@ -1,21 +1,21 @@
 <template>
-<div class="header" id="header">
-  <div class="header__left">
-    <slot name="left"></slot>
+  <div class="header" id="header">
+    <div class="header__left">
+      <slot name="left"></slot>
+    </div>
+    <div class="header__center">
+      <slot name="center"></slot>
+    </div>
+    <div class="header__right">
+      <slot name="right"></slot>
+    </div>
   </div>
-  <div class="header__center">
-    <slot name="center"></slot>
-  </div>
-  <div class="header__right">
-    <slot name="right"></slot>
-  </div>
-</div>
 </template>
 
 <script>
 export default {
-  name: 'Header'
-}
+  name: "Header"
+};
 </script>
 
 <style lang="scss" scoped>
