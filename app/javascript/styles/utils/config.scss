@@ -112,7 +112,6 @@ a {
   text-decoration: none;
 
   &:hover, &:focus, &:active {
-    color: darken($link, 10);
     text-decoration: none;
   }
 }
